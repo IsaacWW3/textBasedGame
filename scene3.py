@@ -87,7 +87,7 @@ def scene3():
     time.sleep(t)
     print('Kexus points to a chair nearby and motions for you to have a seat')
     time.sleep(t)
-    print('Kexus: "Sit tight, let me find a book you may find extremely helpful"')
+    print('Kexus: "Sit tight, let me find a book you may find helpful"')
     time.sleep(t)
     print('Kexus hands you a book titled "A Brief History of Consulatia"')
     time.sleep(t)
@@ -102,6 +102,12 @@ def scene3():
     print('Kexus hands you another book, this one titled "The Atherial and Dratherial"')
     time.sleep(t)
 
+    god_book()
+    time.sleep(t)
+
+
+
+
     #  at the end of talking to Kexus, he hands you les's first sword, which will append the steel sword
 
-scene3()
+#  scene3()
