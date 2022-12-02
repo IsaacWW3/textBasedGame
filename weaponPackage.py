@@ -5,7 +5,7 @@ import sys
 
 string.ascii_lowercase
 
-t = 1.5
+t = 2
 
 ''' the character class holds the variables for both the player and enemies, I originally planned for this to be 
     more advanced, but instead opted to make it more simple and develop systems such as the dialogue tree '''
@@ -92,6 +92,42 @@ to work properly
 #  backpack["god"][0]()
 '''
 
+# --------------------------------------------------------------------------------------------------------------------
+#  this function is for checking if the player or enemy is dead, and if they aren't it prints their health
+
+def dead_check():
+    if enemy_type[e].hp <= 0:
+
+        time.sleep(t)
+
+        print(enemy_name[e], "health is now 0")
+
+        time.sleep(t)
+
+        print("You successfully killed", enemy_name[e])
+        player.hp = 100
+
+        time.sleep(t)
+
+        print("Your health has recovered to", player.hp)
+        fight = False
+
+    elif player.hp <= 0:
+        time.sleep(t)
+
+        print(enemy_name[e], "health is now", enemy_type[e].hp)
+        time.sleep(t)
+
+        print("Your health is now 0")
+        time.sleep(t)
+        print("Game over!")
+        exit()  # this terminates the program if the player hits zero health
+    else:
+        time.sleep(t)
+        print(enemy_name[e], "health is now", enemy_type[e].hp)
+        time.sleep(t)
+        print("Your health is now", player.hp)
+
 # ---------------------------------------------------------------------------------------------------------------------
 def weapon_select():  # this function is for selecting a weapon
     print("You weapon choices are", *backpack_list, sep=", ")
@@ -135,9 +171,13 @@ def combat():  # this function is for combat
 
             time.sleep(t)
 
+            dead_check()
+
             print(enemy_name[e], "attacks you for", enemy_type[e].atk, "damage!")  # this prints how much damage you will take
 
             player.hp -= enemy_type[e].atk  # player health minus enemy attack
+
+            dead_check()
         else:  # this is for if the player puts the wrong character, it's all more of the same
             time.sleep(t)
 
@@ -149,41 +189,6 @@ def combat():  # this function is for combat
 
             player.hp -= enemy_type[e].atk
 
-        # ----------------------------------------------------------------------------------------------------------
-            ''' this is basically an if/elif/else to run a dead check on the player as well as the enemy
-                the only problem I have with this right now is that it lets the enemy attack after they're at 0 health
-                but I'm too lazy to fix that right now so it's a feature :D '''
+            dead_check()
 
-        if enemy_type[e].hp <= 0:
-
-            time.sleep(t)
-
-            print(enemy_name[e], "health is now 0")
-
-            time.sleep(t)
-
-            print("You successfully killed", enemy_name[e])
-            player.hp = 100
-
-            time.sleep(t)
-
-            print("Your health has recovered to", player.hp)
-            fight = False
-
-        elif player.hp <= 0:
-            time.sleep(t)
-
-            print(enemy_name[e], "health is now", enemy_type[e].hp)
-            time.sleep(t)
-
-            print("Your health is now 0")
-            time.sleep(t)
-            print("Game over!")
-            exit()  # this terminates the program if the player hits zero health
-        else:
-            time.sleep(t)
-            print(enemy_name[e], "health is now", enemy_type[e].hp)
-            time.sleep(t)
-            print("Your health is now", player.hp)
-
-# combat()
+#  combat()
