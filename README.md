@@ -5,5 +5,3 @@ This is my text based game I made for my final project in a beginner to python c
 To make sure the game runs as it is supposed to, make sure to keep all of the files within the same folder. To open the files, you will need some sort of application that can open a python file and allow you to run it. 
 
 Upon running the consolatiaMain.py file, you should be able to play through the game. There is a programmed delay between every line, as to make it more redable and understandable
-
-As of 11/28/2022, the scene three file is currently being worked on and is commented out on the main file.
