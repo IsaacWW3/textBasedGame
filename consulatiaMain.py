@@ -6,7 +6,7 @@ from scene3 import scene3
 def main():
     scene1()
     scene2()
-    # scene3()
+    scene3()
     print("*END OF DEMO*")
 
 main()
