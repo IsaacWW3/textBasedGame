@@ -6,6 +6,18 @@ from weaponPackage import backpack, dagger, backpack_list
 
 t = 4  # t is for time, and its the amount of seconds in between every line
 
+def dialogue_tutorial():
+    print("*THIS IS YOUR DIALOGUE TUTORIAL*")
+    time.sleep(t)
+    print("You will be prompted with multiple dialogue options when entering conversation")
+    time.sleep(t)
+    print("To continue the conversation, type the number of the dialogue option you want to say")
+    time.sleep(t)
+    print("When in dialogue, you cannot leave until the conversation is done")
+    time.sleep(t)
+    print("*THIS IS THE END OF YOUR DIALOGUE TUTORIAL*")
+    time.sleep(t)
+
 
 def scene1():
     username = input("Enter your name: ").title()
@@ -33,6 +45,7 @@ def scene1():
     time.sleep(t)
     print("You realize that you're at an inn, and decide to head downstairs")
     time.sleep(t)
+    dialogue_tutorial() # this runs your dialogue tutorial
     aDialogue.getTree('tavern').callAnswer()  # this runs the dialogue for tavern
 
 #  scene1()
