@@ -42,6 +42,32 @@ class dialogue:
                 '1.1.1.1': node('Kexus: "Well hero, why are you here?"',
                                 ['You: "Im here because I had a vision of a god (I think) who told me I was the chosen hero to fight the Demon lord']),
                 '1.1.1.1.1': node('Kexus: "That was certainly... unexpected... hmm... come with me."', is_terminating_node=True)
+            },
+            'library':  {
+                '1': node('Keuxs: "Any questions?"',
+                          ['You: "You knew the hero Les?"', 'You: "Nope"']),
+                '1.1': node('Kexus: "Yes I knew them... they were... such a kind soul"',
+                            ['You: "I think Les was the god that I met!"', 'You: "What can you tell me about Les?"']),
+                '1.1.1': node('Kexus: "You met Les? They must have been the one to tell you to defeat the Demon Lord.'
+                              '\n This is very interesting, do you know how you communicated with them?"',
+                              ['You: "No, I have no clue how or why I was able to talk to Les."',
+                               'You: "I think I died in another world and was reincarnated into this one"']),
+                '1.1.1.1': node('Kexus: "This is very perplexing, perhaps there is a way for you to communicate with them again"',
+                                is_terminating_node=True),
+                '1.2': node('Kexus: "Ah, I see, continue reading then"', is_terminating_node=True),
+                '1.1.2': node('Kexus: "Les was a hero of humanity, kind of heart and a the sweets soul known to mankind.'
+                              '\n I honestly miss him dearly, everyone does..."',
+                              ['You: "The book also mentions Essie, what happened to her?"',
+                               'You: "If I was able to talk to Les once, I should be able to again right?"']),
+                '1.1.2.1': node('Kexus: "Essie was devestated after the loss of Less... she now wanders around as a drunkard"',
+                                ['You: Thats kind of sad... do you think we could find her?"']),
+                '1.1.2.1.1': node('Kexus: "Perhaps we could, and now that I think maybe you can communicate with Les again!',
+                             is_terminating_node=True),
+                '1.1.2.2': node('Kexus: "Yes you should! Follow me!"', is_terminating_node=True),
+                '1.1.1.2': node('Kexus: "Another world? This wouldnt be the first time something like this happened..."',
+                                ['You: "What do you mean?"']),
+                '1.1.1.2.1': node('Kexus: "Never mind that, I think you might be able to communicate with Les again! Follow me!"',
+                                  is_terminating_node=True)
             }
         }
 
@@ -102,6 +128,23 @@ class dialogue:
                         })
                     })
                 })
+            }),
+            'library': crotch(self.nodes['library']['1'], {
+                '1': crotch(self.nodes['library']['1.1'], {
+                    '1': crotch(self.nodes['library']['1.1.1'], {
+                        '1': crotch(self.nodes['library']['1.1.1.1']),
+                        '2': crotch(self.nodes['library']['1.1.1.2'], {
+                            '1': crotch(self.nodes['library']['1.1.1.2.1'])
+                        })
+                    }),
+                    '2': crotch(self.nodes['library']['1.1.2'], {
+                        '1': crotch(self.nodes['library']['1.1.2.1'], {
+                            '1': crotch(self.nodes['library']['1.1.2.1.1'])
+                        }),
+                        '2': crotch(self.nodes['library']['1.1.2.2'])
+                    })
+                }),
+                '2': crotch(self.nodes['library']['1.2'])
             })
         }
 
@@ -163,4 +206,4 @@ class crotch:
 
 
 aDialogue = dialogue()
-#  aDialogue.getTree('tavern').callAnswer()
+#  aDialogue.getTree('library').callAnswer()
