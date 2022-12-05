@@ -48,7 +48,6 @@ def scene2():
     time.sleep(t)
     print("Remembering what Les said, you decide its time to be a hero")
     time.sleep(t)
-    print("You enter combat with the bandit!")
 
     change_e_pos()  # this increases the e var by 1 making the enemy type a bandit
     combat()  # this iteration of the combat function should run with the bandit as the enemy
