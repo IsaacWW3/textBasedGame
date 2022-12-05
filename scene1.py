@@ -45,7 +45,7 @@ def scene1():
     time.sleep(t)
     print("You realize that you're at an inn, and decide to head downstairs")
     time.sleep(t)
-    dialogue_tutorial() # this runs your dialogue tutorial
+    dialogue_tutorial()  # this runs your dialogue tutorial
     aDialogue.getTree('tavern').callAnswer()  # this runs the dialogue for tavern
 
 #  scene1()
