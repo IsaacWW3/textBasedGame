@@ -1,4 +1,5 @@
 import time
+from dialoguePackage import aDialogue
 t = 4
 #  THIS FILE IS A WORK IN PROGRESS
 
@@ -104,6 +105,8 @@ def scene3():
 
     god_book()
     time.sleep(t)
+
+    aDialogue.getTree('library').callAnswer()
 
 
 
