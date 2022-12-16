@@ -96,6 +96,7 @@ to work properly
 #  this function is for checking if the player or enemy is dead, and if they aren't it prints their health
 
 def dead_check():
+    global fight
     if enemy_type[e].hp <= 0:
 
         time.sleep(t)
@@ -148,6 +149,7 @@ def weapon_select():  # this function is for selecting a weapon
 # -------------------------------------------------------------------------------------------------------------------
 
 def combat():  # this function is for combat
+    global fight
     fight = True  # setting fight to True to trigger the while loop later one
     print("You have entered combat against " + enemy_name[e] + "!")  # the + enemy_name[e] + allows for cleaner formatting mid-text
     weapon_select()  # this calls the weapon selection function from above
@@ -172,12 +174,14 @@ def combat():  # this function is for combat
             time.sleep(t)
 
             dead_check()
+            if player.hp > 0 and enemy_type[e].hp > 0:
+                print(enemy_name[e], "attacks you for", enemy_type[e].atk,
+                      "damage!")  # this prints how much damage you will take
 
-            print(enemy_name[e], "attacks you for", enemy_type[e].atk, "damage!")  # this prints how much damage you will take
+                player.hp -= enemy_type[e].atk  # player health minus enemy attack
 
-            player.hp -= enemy_type[e].atk  # player health minus enemy attack
+                dead_check()
 
-            dead_check()
         else:  # this is for if the player puts the wrong character, it's all more of the same
             time.sleep(t)
 
